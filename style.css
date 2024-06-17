@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+:root {
+
+    --primary-blue: hsl(215, 51%, 70%);
+    --primary-cyan: hsl(178, 100%, 50%);
+    --primary-cyan-hsl: 178, 100%, 50%;
+
+    --neutral-1: hsl(217, 54%, 11%);
+    --neutral-2: hsl(216, 50%, 16%);
+    --neutral-3: hsl(215, 32%, 27%);
+    --neutral-4: hsl(0, 0%, 100%);
+
+    --default-font-family: 'Outfit', sans-serif;
+
+
+    --fs-1: .5rem;
+    --fs-2: .875rem;
+    --fs-3: 1rem;
+    --fs-4: 1.125rem;
+    --fs-5: 1.375rem;
+    --fs-6: 2rem;
+}
+
+body {
+    font-family: var(--default-font-family);
+    font-size: var(--fs-3);
+    font-weight: 300;
+    min-height: 100vh;
+    line-height: 1.5;
+
+    background-color: var(--neutral-1);
+    color: var(--primary-blue);
+
+    display: grid;
+    place-content: center;
+}
+
+.card {
+    width: calc(100vw - 3rem);
+    display: grid;
+    grid-auto-flow: row;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--neutral-2);
+    border-radius: 1rem;
+    box-shadow: 0 0 32px hsla(0, 0%, 0%, .05), 0 24px 32px hsla(0, 0%, 0%, .1);
+}
+
+@media (width > 450px) {
+    body {
+        font-size: var(--fs-4);
+    }
+
+    .card {
+        gap: 1.5rem;
+        width: 350px;
+    }
+}
+
+.card-img-wrapper {
+    border-radius: .5rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.card-img-wrapper::after {
+    content: url(./images/icon-view.svg);
+    display: grid;
+    place-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(50%, -50%);
+    left: 50%;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(var(--primary-cyan-hsl), .5);
+    animation: slide-out .5s ease-in-out both;
+}
+
+.card-img-wrapper:hover::after {
+    animation: slide-in .5s ease-in-out both;
+}
+
+h1 a {
+    text-decoration: none;
+    font-size: var(--fs-5);
+    font-weight: 600;
+    color: var(--neutral-4);
+}
+
+@media (width > 450px) {
+    :root {
+        --fs-5: 1.5rem;
+
+    }
+}
+
+h1:hover a {
+    color: var(--primary-cyan);
+    cursor: pointer;
+    text-shadow: 0 0 10px hsla(var(--primary-cyan-hsl), .25);
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.balance {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+
+h2 {
+    font-weight: 400;
+    color: var(--primary-cyan);
+}
+
+.deadline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+
+.creater {
+    border-top: 1px solid var(--neutral-3);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar-wrapper {
+    inline-size: 36px;
+    border: 1px solid var(--neutral-4);
+
+    background-color: var(--neutral-4);
+    border-radius: 50%;
+}
+
+.creater-name {
+    color: white;
+    text-wrap: nowrap;
+}
+
+.creater-name:hover {
+    color: var(--primary-cyan);
+    cursor: pointer;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translate(50%, -50%);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        transform: translate(100%, -50%);
+    }
+}
